@@ -3,7 +3,7 @@ let { MongoClient } = require("mongodb");
 console.log(MongoClient);
 
 let client = new MongoClient(
-  "",
+  "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.12.0",
 );
 
 //console.log(client);
@@ -33,13 +33,18 @@ try {
   // let result = await db2.collection("student").findOne();
   // console.log(result.name);
 
-  let db2 = client.db("CSE");
-  let result = await db2pwd.collection("student").find({ branch: "CSE" }, { projection: { _id: 0 } }).toArray();
-  console.log(result.name);
+  // let db2 = client.db("CSE");
+  // let result = await db2pwd.collection("student").find({ branch: "CSE" }, { projection: { _id: 0 } }).toArray();
+  // console.log(result.name);
+  // let finalname = Data.name || "name not provided"
+  // console.lof(finalname);
 
-  let finalname = Data.name || "name not provided"
-  console.lof(finalname);
 
+  let db2 =  client.db('CSE');
+  let users = db.collection('users');
+  await users.insertOne({userName: 'ravi', email:'ravi@gmail.com', password: '1234', gender:"M"});
+
+  console.log(result);
 } 
 catch (err) {
   console.log(err);
