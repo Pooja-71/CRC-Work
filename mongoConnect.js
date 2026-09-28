@@ -37,6 +37,8 @@ try {
   let result = await db2pwd.collection("student").find({ branch: "CSE" }, { projection: { _id: 0 } }).toArray();
   console.log(result.name);
 
+  let finalname = Data.name || "name not provided"
+  console.lof(finalname);
 
 } 
 catch (err) {
